@@ -34,6 +34,3 @@ extension ServicePassthroughDelegate {
     }
 }
 
-public protocol ServicePassthroughDataSource {
-    var servicePassthroughDelegate: ServicePassthroughDelegate {get}
-}

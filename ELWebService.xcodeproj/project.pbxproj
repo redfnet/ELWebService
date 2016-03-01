@@ -17,6 +17,8 @@
 		17821A031C623D2C00D3837D /* ServiceTask+TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17821A021C623D2C00D3837D /* ServiceTask+TestUtils.swift */; };
 		17C96AAB1AB0CBB800D49071 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 17C96AAA1AB0CBB800D49071 /* LICENSE */; };
 		17D1879E1AB0B173000742BF /* ELWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D187991AB0B173000742BF /* ELWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA1B66591C864EC9003A8196 /* ServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B66581C864EC9003A8196 /* ServiceConfiguration.swift */; };
+		CA1B665B1C864FB1003A8196 /* ServiceUserInterfaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B665A1C864FB1003A8196 /* ServiceUserInterfaceDelegate.swift */; };
 		CAF0AF991C5054DE0007761C /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17088EDF1C5011FB007ADE1B /* WebService.swift */; };
 		CAF0AF9A1C5054E20007761C /* SessionDataTaskDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17088EE01C5011FB007ADE1B /* SessionDataTaskDataSource.swift */; };
 		CAF0AF9B1C5054E60007761C /* ServiceTaskResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17088EE11C5011FB007ADE1B /* ServiceTaskResult.swift */; };
@@ -54,6 +56,8 @@
 		17C96AAA1AB0CBB800D49071 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		17D187961AB0B173000742BF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17D187991AB0B173000742BF /* ELWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELWebService.h; sourceTree = "<group>"; };
+		CA1B66581C864EC9003A8196 /* ServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConfiguration.swift; sourceTree = "<group>"; };
+		CA1B665A1C864FB1003A8196 /* ServiceUserInterfaceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceUserInterfaceDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				17088EDF1C5011FB007ADE1B /* WebService.swift */,
 				17088EE01C5011FB007ADE1B /* SessionDataTaskDataSource.swift */,
 				1720E8231C6A483100DBB925 /* ServicePassthroughDelegate.swift */,
+				CA1B665A1C864FB1003A8196 /* ServiceUserInterfaceDelegate.swift */,
+				CA1B66581C864EC9003A8196 /* ServiceConfiguration.swift */,
 				17088EE11C5011FB007ADE1B /* ServiceTaskResult.swift */,
 				17088EE21C5011FB007ADE1B /* ServiceTask.swift */,
 				17547AD51C6121E200D4B030 /* ServiceTask+ObjC.swift */,
@@ -264,10 +270,12 @@
 			files = (
 				CAF0AF9C1C5054E90007761C /* ServiceTask.swift in Sources */,
 				CAF0AF9A1C5054E20007761C /* SessionDataTaskDataSource.swift in Sources */,
+				CA1B665B1C864FB1003A8196 /* ServiceUserInterfaceDelegate.swift in Sources */,
 				CAF0AF9D1C5054ED0007761C /* Request.swift in Sources */,
 				CAF0AF991C5054DE0007761C /* WebService.swift in Sources */,
 				17547AD61C6121E200D4B030 /* ServiceTask+ObjC.swift in Sources */,
 				1720E8241C6A483100DBB925 /* ServicePassthroughDelegate.swift in Sources */,
+				CA1B66591C864EC9003A8196 /* ServiceConfiguration.swift in Sources */,
 				CAF0AF9B1C5054E60007761C /* ServiceTaskResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

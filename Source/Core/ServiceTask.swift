@@ -51,7 +51,7 @@ import Foundation
             // Use observer to watch for error result to send to passthrough
             guard let result = taskResult else { return }
             switch result {
-            case .Failure(let error): passthroughDelegate?.serviceResultFailure(error)
+            case .Failure(let error): configuration?.passthroughDelegate?.serviceResultFailure(error)
             case .Empty, .Value(_): return
             }
         }
@@ -66,8 +66,8 @@ import Foundation
     /// Type responsible for creating NSURLSessionDataTask objects
     private weak var dataTaskSource: SessionDataTaskDataSource?
     
-    /// Delegate interface for handling raw response and request events
-    internal weak var passthroughDelegate: ServicePassthroughDelegate?
+    /// Service configuration
+    internal weak var configuration: ServiceConfiguration?
     
     // MARK: Intialization
     
@@ -229,15 +229,15 @@ extension ServiceTask {
                 switch taskResult {
                 case .Value(let value):
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.passthroughDelegate?.updateUIBegin(self.urlResponse)
+                        self.configuration?.passthroughDelegate?.updateUIBegin(self.urlResponse)
                         handler(value)
-                        self.passthroughDelegate?.updateUIEnd(self.urlResponse)
+                        self.configuration?.passthroughDelegate?.updateUIEnd(self.urlResponse)
                     }
                 case .Empty:
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.passthroughDelegate?.updateUIBegin(self.urlResponse)
+                        self.configuration?.passthroughDelegate?.updateUIBegin(self.urlResponse)
                         handler(nil)
-                        self.passthroughDelegate?.updateUIEnd(self.urlResponse)
+                        self.configuration?.passthroughDelegate?.updateUIEnd(self.urlResponse)
                     }
                 case .Failure(_): break
                 }

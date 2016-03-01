@@ -28,7 +28,8 @@ import Foundation
             return NSURLSession.sharedSession()
         }
     }
-    private weak var passthroughDelegate: ServicePassthroughDelegate?
+    
+    private weak var configuration: ServiceConfiguration?
     
     // MARK: Initialization
     
@@ -41,14 +42,12 @@ import Foundation
         
         super.init()
         
-        if let passthroughDataSource = self as? ServicePassthroughDataSource {
-            passthroughDelegate = passthroughDataSource.servicePassthroughDelegate
-        }
+        configuration = ServiceConfiguration.defaultConfiguration
     }
     
-    public convenience init(baseURLString: String, passthroughDelegate: ServicePassthroughDelegate) {
+    public convenience init(baseURLString: String, configuration: ServiceConfiguration) {
         self.init(baseURLString: baseURLString)
-        self.passthroughDelegate = passthroughDelegate
+        self.configuration = configuration
     }
 }
 
@@ -149,7 +148,7 @@ extension WebService {
     /// Create a service task to fulfill a given request.
     func serviceTask(request request: Request) -> ServiceTask {
         let task = ServiceTask(request: request, dataTaskSource: self)
-        task.passthroughDelegate = passthroughDelegate
+        task.configuration = configuration
         return task
     }
 }
@@ -159,14 +158,14 @@ extension WebService {
 extension WebService: SessionDataTaskDataSource {
     /// NSURLSessionDataTask API
     @objc public func dataTaskWithRequest(var request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-        if let modifiedRequest = passthroughDelegate?.modifiedRequest(request) {
+        if let modifiedRequest = configuration?.passthroughDelegate?.modifiedRequest(request) {
             request = modifiedRequest
         }
         
-        passthroughDelegate?.requestSent(request)
+        configuration?.passthroughDelegate?.requestSent(request)
         
         return serviceDataTaskSource.dataTaskWithRequest(request) { data, response, error in
-            self.passthroughDelegate?.responseReceived(response, data: data, request: request, error: error)
+            self.configuration?.passthroughDelegate?.responseReceived(response, data: data, request: request, error: error)
             completionHandler(data, response, error)
         }
     }
